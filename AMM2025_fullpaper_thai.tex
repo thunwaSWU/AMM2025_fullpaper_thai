@@ -1,0 +1,340 @@
+%====================================================
+% MUST COMPILE WITH XeLaTeX
+% Put font files in the same folder as the .tex file
+%====================================================
+% Proceedings Template (THA)
+% The 29th Annual Meeting in Mathematics (AMM 2025)
+% Srinakharinwirot University
+%====================================================
+
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt, a4paper, twoside]{article}
+
+\usepackage{geometry,graphicx}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+%\usepackage[hang,flushmargin]{footmisc}
+\geometry{top=5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headheight=3cm}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage[T1]{fontenc}
+\usepackage{indentfirst}
+
+
+%%%References
+\usepackage{etoolbox}
+\apptocmd{\thebibliography}{\setlength{\itemsep}{0pt}}{}{}
+\usepackage{cite}
+\usepackage{enumitem}
+
+%%
+\newcommand\blfootnote[1]{\let\thefootnote\relax\footnotetext{\ignorespaces #1}}
+\addtolength{\footnotesep}{1pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SETUP FOR THAI LANGUAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{polyglossia}
+\usepackage{fontspec}
+\usepackage{xltxtra}
+\usepackage{xunicode}
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 0pt 
+\defaultfontfeatures{Mapping=tex-text} 
+
+\newfontfamily\thaifont{THSarabunNew.ttf}[
+    Path,
+    BoldFont= THSarabunNew Bold.ttf,
+    ItalicFont=THSarabunNew Italic.ttf,
+    BoldItalicFont=THSarabunNew BoldItalic.ttf,
+    Scale = 1.35]
+\newfontfamily\thaifonttt{Sarabun-Regular.ttf}[
+    Path,
+    Script = Thai,
+    Scale = 0.95]
+\setmainlanguage{thai}
+\renewcommand{\baselinestretch}{1.3}
+
+\usepackage[Latin,Thai]{ucharclasses}
+\setTransitionsForLatin
+  {\begingroup\rmfamilylatin}
+  {\endgroup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{AMM-abstractTH}[4][]{
+  \begin{center}
+    { \renewcommand\textsuperscript[1]{}\par}
+    {{\Large\bfseries #2}\par}
+    \medskip
+    {\large #3\par}
+    \bigskip
+    {\small #4\par}
+    \bigskip\bigskip
+    {{\large\bfseries บทคัดย่อ}\par}
+  \end{center}
+}{ 
+    \bigskip
+    \hrule
+    \bigskip
+}
+
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\mykeywordsTH}[1]{%
+    \noindent \textbf{Keywords:} #1 \par
+}
+\newcommand{\myMSC}[1]{
+    \noindent \textbf{2020 MSC:} #1 \par
+}
+
+\pagestyle{fancy}
+\fancyhead[L]{\footnotesize
+The 29\textsuperscript{th} Annual Meeting in Mathematics (AMM 2025)\\
+Department of Mathematics, Faculty of Science,\\
+Srinakharinwirot University,
+Bangkok, Thailand}
+\fancyhead[R]{\includegraphics[width=2.3cm]{amm2025_logo_small_color.png}}
+
+
+%%%%%%% Use AMSLaTeX Theorem Style %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{ทฤษฎีบท}[section]
+\newtheorem{lemma}[theorem]{บทตั้ง}
+\newtheorem{proposition}[theorem]{ประพจน์}
+\newtheorem{conjecture}[theorem]{ข้อความคาดการณ์}
+\newtheorem{corollary}[theorem]{บทแทรก}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{นิยาม}
+\newtheorem{example}[theorem]{ตัวอย่าง}
+\newtheorem{question}[theorem]{คำถาม}
+\newtheorem{problem}[theorem]{ข้อปัญหา}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{หมายเหตุ}
+\renewcommand*{\proofname}{พิสูจน์}
+
+\numberwithin{equation}{section}
+\renewcommand{\figurename}{ภาพที่}
+\renewcommand{\tablename}{ตารางที่}
+
+%\renewcommand{\abstractname}{\large \bf บทคัดย่อ}
+%\usepackage{setspace}  %% double spacing - for thai version
+%\usepackage{showframe}
+
+
+%%%%%%%%%%%%%%% DO NOT make any changes above %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% PLEASE CUSTOMIZE  BELOW  %%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%------------  Insert any required packages and definitions here --------------
+
+%\usepackage{showframe}
+% \usepackage{xxx}
+
+\newcommand{\myvec}[1]{\mathbf{#1}}
+%%%%%%
+
+%============   END OF CUSTOMIZATION  ===================
+
+\usepackage[hidelinks, hyperfootnotes=false]{hyperref}
+\hypersetup{
+    colorlinks=true, 
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+}
+
+\begin{document}
+
+\setcounter{section}{0}
+
+%%%%%%%%%%%%%%%%%%%%%  START YOUR DOCUMENT HERE %%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%
+% Use the following command to write your abstract:
+%
+% \begin{AMM-abstractTH}[]
+% {Title}
+% {Authors (use \textsuperscript as institution markers)}
+% {Institutions (use \textsuperscript as institution markers)}
+% Abstract text
+% \end{AMM-abstractTH}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{AMM-abstractTH}[]
+{ชื่อเรื่อง} %TITLE
+{ชื่อผู้แต่งคนแรก\textsuperscript{1,}\footnote{ผู้นำเสนอ (name@email.com)}, ชื่อผู้แต่งคนที่สอง\textsuperscript{1}
+และ ชื่อผู้แต่งคนที่สาม\textsuperscript{2,}\footnote{(ตัวอย่าง) ได้รับทุนสนับสนุนจาก...}} %AUTHORS
+{\textsuperscript{1}ภาควิชาคณิตศาสตร์ คณะวิทยาศาสตร์
+มหาวิทยาลัยศรีนครินทรวิโรฒ 10110\\ \smallskip
+\textsuperscript{2}ภาควิชาคณิตศาสตร์ สถิติและคอมพิวเตอร์ คณะวิทยาศาสตร์ \\ มหาวิทยาลัยอุบลราชธานี 34190} %AFFILIATIONS
+
+%YOUR ABSTRACT GOES HERE
+บทคัดย่อภาษาไทยไม่ควรเกิน 250 คำ 
+โดยให้ใช้แบบและขนาดอักษรของข้อความต่าง ๆ ดังในไฟล์นี้ 
+และไม่มีการอ้างอิงในบทคัดย่อ แนะนำให้ผู้เขียนใช้ลำดับการเขียนบทคัดย่อดังนี้  
+
+1) ความเป็นมาและความสำคัญของปัญหา: วางคำถามในบริบทกว้าง ๆ และเน้นวัตถุประสงค์ของการวิจัย 
+
+2) วิธีการดำเนินการวิจัย: อธิบายวิธีการหลักที่ใช้ในงานวิจัยสั้นๆ 
+
+3) ผลการวิจัย: สรุปผลการค้นที่พบหลัก ๆ ของบทความ และ 
+
+4) สรุปผลการวิจัยและอภิปรายผล: ระบุข้อสรุปหลักหรือการตีความ 
+
+บทคัดย่อควรแสดงวัตถุประสงค์ของบทความแต่ต้องไม่มีผลที่ไม่ได้นำเสนอและไม่ควรสรุปเกินจริง
+ดูข้อมูลเพิ่มเติมเกี่ยวกับระบบการจำแนกวิชาคณิตศาสตร์ (2020 MSC) ได้ที่ \\ \url{https://mathscinet.ams.org/msnhtml/msc2020.pdf}
+\end{AMM-abstractTH}
+
+%%%%%%%%%%%%%%%%% Keywords and MSC %%%%%%%%%%%%%%%%%%%%%%
+
+\mykeywordsTH{คำสำคัญ 1, คำสำคัญ 2, คำสำคัญ 3} %Please include 3-5 keywords here. Use comma to separate items in the list.
+\smallskip
+\myMSC{nnXxx, nnXxx, nnXxx} %Please include MSC here. The first item is the primary MSC. Use comma to separate items in the list.
+
+
+\section{บทนำ}\label{yourname:intro}
+บทความนี้ใช้ฟอนต์ THSarabunNew และ Sarabun ให้วางไฟล์ฟอนต์ทั้ง 5 ไฟล์ไว้ในโฟลเดอร์เดียวกันกับไฟล์ .tex เสนอ ทำการประมวลผลด้วย XeLaTeX (การตัดคำภาษาไทยใน XeLaTeX อาจจะมีความไม่สมบูรณ์ ต้องมีการตรวจทานทุกครั้ง) ใช้การแบ่ง section ด้วยคำสั่งมาตรฐานของ \LaTeX\
+ 
+บทนำควรเป็นการปูพื้นฐานความรู้ที่เกี่ยวข้องกับหัวข้อวิจัย อธิบายถึงความสำคัญและความจำเป็นของการศึกษา รวมถึงระบุวัตถุประสงค์ของงานอย่างชัดเจน ควรครอบคลุมการทบทวนวรรณกรรมที่เกี่ยวข้อง ชี้ให้เห็นถึงช่องว่างทางความรู้หรือประเด็นที่ยังไม่ได้รับการแก้ไข และสรุปคำถามหรือสมมติฐานที่เป็นหัวใจสำคัญของการศึกษา เพื่อสร้างความชัดเจนและเน้นย้ำถึงความสำคัญของงานวิจัยนี้ต่อวงการวิชาการ
+ 
+\section{ความรู้พื้นฐาน}\label{yourname:prelim}
+
+โปรดใช้ระบบของ \LaTeX\ ในการอ้างอิง \cite{yourname:book, yourname:bookthai, yourname:bookchapter} และตรวจสอบให้แน่ใจว่าเอกสารทุกฉบับในบรรณานุกรมนั้นได้รับการอ้างถึงในเนื้อหาด้วยเช่นกัน ให้ใช้รูปแบบการอ้างอิง Elsevier's standard numbered style ทั้งการอ้างอิงภายในบทความและบรรณานุกรม เรียงลำดับเอกสารอ้างอิงตามลำดับที่ปรากฎในบทความ 
+ดูตัวอย่างได้ใน source file และดูวิธีการอ้างอิงเพิ่มเติมได้ที่ \url{https://booksite.elsevier.com/9780081019375/content/Elsevier\%20Standard\%20Reference\%20Styles.pdf} ดูวิธีการย่อชื่อวารสารได้ที่ \\ \url{https://mathscinet.ams.org/msnhtml/serials.pdf}
+
+\subsection{หัวข้อย่อย}\label{yourname:intro_I}
+พิมพ์ข้อความตรงนี้ เช่นสมการ $y'+4y^2=0$ หรือให้สมการแสดงตรงกลางบรรทัด
+\[
+	\vec{a}\times\vec{b} = \vec{c}+\sum_{i=1}^n C_i 
+\]
+ลำดับตัวเลขของสมการจะปรากฎด้านขวาของสมการโดยระบุเป็นหมายเลขของหัวข้อ (section) ตามด้วยลำดับหมายเลขสมการ ดังตัวอย่างต่อไปนี้
+\begin{equation}\label{yourname:eq15}
+	h =T \left ( \sum_{i=1}^n x_i \otimes y_i \right ).
+\end{equation}
+
+label ภายในและ cite ทุกคำสั่ง ควรขึ้นต้นด้วยนามสกุลของผู้แต่งคนแรก ดังนี้
+\begin{verbatim}
+YourName:ref
+\end{verbatim}
+ตัวอย่างเช่น ถ้านามสกุลของผู้แต่งคนแรกคือ ``Peters,'' ควรตั้ง label และ cite ว่า
+\begin{verbatim}
+\label{peters:eq15}
+\end{verbatim}
+
+\subsubsection{ห้วข้อย่อยลงไปอีก}
+ใช้คำสั่ง \LaTeX สำหรับการอ้างอิงภายใน เช่น ดูตอนที่ \ref{yourname:intro_I} และดูสมการ (\ref{yourname:eq15}) และใช้คำสั่งของ package amsthm สำหรับนิยาม บทตั้ง ทฤษฎีบท ฯลฯ  
+
+\begin{definition}
+ให้ $A \subseteq \mathbb{R}^n$ เป็นเซตคอนเวกซ์  เรียกจุด $x \in A$ ว่าจุดสุดขีด ถ้า $\dots$
+\end{definition}
+
+\begin{theorem}
+	ข้อความทฤษฎีบทเริ่มพิมพ์ตรงนี้
+\end{theorem}
+\begin{proof}
+   บทพิสูจน์ทิ้งไว้ให้เป็นแบบฝึกหัดของผู้อ่าน
+\end{proof}
+
+\begin{lemma}
+	พิมพ์บทตั้งตรงนี้
+\end{lemma}
+
+\section{ผลการศึกษา}
+ใช้ floats สำหรับรูปภาพและตาราง โดยวางไฟล์ภาพไว้ในโฟลเดอร์เดียวกันกับไฟล์ .tex\footnote{This is a regular footnote.}
+     
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.1]{amm2025_logo_small_color.png}
+\caption{AMM 2025 Srinakharinwirot University 21-23 May 2025}
+\label{yourname:ammlogo}
+\end{figure}
+
+\begin{table}[h]
+\caption{เจ้าภาพจัดงาน AMM}
+\begin{center}
+\begin{tabular}{clc}  \hline
+ AMM & เจ้าภาพ & ปี\\ \hline\hline
+ $26^{th}$ & SUT &$2022$ \\ 
+$27^{th}$ & KU  &$2023$ \\ 
+$28^{th}$ & UBU &$2024$ \\ 
+$29^{th}$ & SWU &$2025$ \\ 	 
+\hline
+\end{tabular}
+\label{yourname:tableofamm}
+\end{center}
+\end{table}
+
+\section{สรุปผลและอภิปรายผล}
+ส่วนอภิปรายควรเป็นการตีความผลการศึกษา เชื่อมโยงข้อมูลที่ได้กับงานวิจัยที่มีอยู่และเน้นย้ำถึงความสำคัญของผลการวิจัย นอกจากนี้ควรกล่าวถึงข้อจำกัดของการศึกษาอย่างตรงไปตรงมา และเสนอแนวทางสำหรับการวิจัยในอนาคตโดยเน้นถึงผลกระทบที่กว้างขึ้นของผลที่ได้รับ
+
+\bigskip\noindent
+\textbf{กิตติกรรมประกาศ} (optional) ผู้แต่งขอขอบคุณผู้ทรงคุณวุฒิทุกท่านที่ได้ให้ข้อคิดเห็นและข้อเสนอแนะต่าง ๆ เพื่อปรับปรุงบทความวิจัยนี้ 
+
+\renewcommand{\refname}{เอกสารอ้างอิง}
+
+\begin{thebibliography}{99}
+%Please type your references directly into the source file.
+%Please order your bibliography items in the order they appear in the text.
+
+%%%Book
+\bibitem{yourname:book}
+D. Gopal, P. Kumam, M. Abbas, Background and Recent Developments of Metric Fixed Point Theory, Taylor \& Francis Group LLC, New York, 2017.
+
+\bibitem{yourname:bookthai}
+อัจฉรา หาญชูวงศ์, ทฤษฎีจำนวน, โรงพิมพ์แห่งจุฬาลงกรณ์มหาวิทยาลัย, กรุงเทพมหานคร, 2542.
+
+%%%Book Chapter
+\bibitem{yourname:bookchapter}
+A. Dorko, What do we know about student learning from online mathematics homework?, in: J.P. Howard II, J.F. Beyes (Eds.), Teaching and Learning Mathematics Online, Boca Raton, C\&H/CRC Press, pp. 17--42.
+
+\bibitem{yourname:bookchapterthai}
+วรวรรณ จิตต์ธรรม, โรคหัวใจพิการแต่กำเนิดที่พบได้บ่อย, ใน: วรวรรณ จิตต์ธรรม, จิรนันท์ วีรกุล, ญาศินี อภิรักษ์นภานนท์, ชุติมา เผือกสามัญ (บ.ก.), กุมารเวชศาสตร์ในเวชปฏิบัติ, สํานักพิมพ์มหาวิทยาลัยนเรศวร, พิษณุโลก, น. 243--280.
+
+%%% Journal article
+\bibitem{yourname:article} T. Theerakarn, On the center of surface area of the boundary of a star-shaped region, College Math. J. 54 (3) (2023) 326--336.
+
+%Multiple authors : less than 7
+\bibitem{yourname:multiple} S. Isariyapalakul, W. Pho-on, V. Khemmani, The true twin classes-based investigation for connected local dimensions of connected graphs, AIMS Math. 9 (4) (2024) 9435--9446.
+
+%Multiple authors : 7 or more
+\bibitem{yourname:seven} S. Weikert, D. Freyer, M. Weih, N. Isaev, C. Busch, J. Schultze, et al., Rapid Ca\textsuperscript{2+}
+-dependent NO-production from central nervous system cells in culture measured by NO-nitrite/ozone chemoluminescence, Brain
+Res. 748 (1997) 1--11.
+
+%Article in other language
+\bibitem{yourname:lang} 
+คุณัชญ์ ศิริสมบูรณ์เวช, ชัญญา เล็กเจริญศรี, ณหทัย ฤกษ์ฤทัยรัตน์, ศิริสุดา อินสกุล, เกมลูกเต๋าฮอกกับกติกาเพิ่มเติม, วารสารคณิตศาสตร์โดยสมาคมคณิตศาสตร์แห่งประเทศไทย ในพระบรมราชูปถัมภ์. 68 (709) (2566) 1--18.
+
+%%% Article in Conference Proceedings
+\bibitem{yourname:proceedings}
+T.E. Chaddock, Gastric emptying of a nutritionally balanced liquid diet, in: E.E. Daniel (Ed.),
+Proceedings of the Fourth International Symposium on Gastrointestinal Motility, ISGM4, 4--8 September 1973, Seattle,
+WA, Mitchell Press, Vancouver, British Columbia, Canada, 1974, pp. 83--92.
+
+%%% Website
+\bibitem{yourname:website} Cancer Research UK, Cancer statistics reports for the UK.
+ <\url{http://www.cancerresearchuk.org/aboutcancer/statistics/cancerstatsreport/}>, 2003 (accessed 13.03.03).
+\bibitem{yourname:websitethai} ภาควิชาคณิตศาสตร์ คณะวิทยาศาสตร์ มหาวิทยาลัยศรีนครินทรวิโรฒ, ประวัติการประชุมวิชาการทางคณิตศาสตร์ระดับชาติ.
+ <\url{http://www.amm2025.com}>, 2567 (สืบค้น 16 ม.ค. 68).
+ 
+%%% Translated Book
+\bibitem{yourname:translated} A.R. Luria, The Mind of a Mnemonist (L. Solotarof, Trans.), Avon Books, New York, 1969 (Original
+work published 1965).
+
+\bibitem{yourname:translated_thai} ดี.ดี. ไฮเซอรอตต์, มนุษยสัมพันธ์: กลยุทธ์การสื่อสารเพื่อความสำเร็จของธุรกิจ (วัฒนา พัฒนพงศ์,
+ผู้แปล), ต้นอ้อ, กรุงเทพมหานคร, 2536 (ต้นฉบับพิมพ์ปี ค.ศ. 1990).
+
+%%% Thesis
+\bibitem{yourname:thesis} T. Theerakarn, Locally volume collapsed 4-manifolds with respect to a lower sectional curvature bound, (Doctoral dissertation), UC Berkeley, 2018 \url{https://escholarship.org/uc/item/0x37d5vr}.
+\bibitem{yourname:thesisthai} อรทัย จุลสุวรรณรักษ์, การค้ามนุษย์ในประเทศไทย, (วิทยานิพนธ์ปริญญามหาบัณฑิต), มหาวิทยาลัยธรรมศาสตร์, 2550.
+
+\end{thebibliography}
+
+\end{document}
