@@ -18,10 +18,8 @@
 \usepackage{tikz}
 %\usepackage[hang,flushmargin]{footmisc}
 \geometry{top=5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headheight=3cm}
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \usepackage[T1]{fontenc}
 \usepackage{indentfirst}
-
 
 %%%References
 \usepackage{etoolbox}
@@ -33,6 +31,7 @@
 \newcommand\blfootnote[1]{\let\thefootnote\relax\footnotetext{\ignorespaces #1}}
 \addtolength{\footnotesep}{1pt}
 
+\AddToHook{begindocument/end}{\renewcommand{\thefootnote}{\fnsymbol{footnote}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % SETUP FOR THAI LANGUAGE
@@ -109,7 +108,7 @@ Bangkok, Thailand}
 \newtheorem{conjecture}[theorem]{ข้อความคาดการณ์}
 \newtheorem{corollary}[theorem]{บทแทรก}
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{นิยาม}
+\newtheorem{definition}[theorem]{บทนิยาม}
 \newtheorem{example}[theorem]{ตัวอย่าง}
 \newtheorem{question}[theorem]{คำถาม}
 \newtheorem{problem}[theorem]{ข้อปัญหา}
@@ -232,7 +231,7 @@ YourName:ref
 ใช้คำสั่ง \LaTeX สำหรับการอ้างอิงภายใน เช่น ดูตอนที่ \ref{yourname:intro_I} และดูสมการ (\ref{yourname:eq15}) และใช้คำสั่งของ package amsthm สำหรับนิยาม บทตั้ง ทฤษฎีบท ฯลฯ  
 
 \begin{definition}
-ให้ $A \subseteq \mathbb{R}^n$ เป็นเซตคอนเวกซ์  เรียกจุด $x \in A$ ว่าจุดสุดขีด ถ้า $\dots$
+ให้ $A \subseteq \mathbb{R}^n$ เป็นเซตนูน  เรียกจุด $x \in A$ ว่า\emph{จุดสุดขีด} ถ้า $\dots$ ... 
 \end{definition}
 
 \begin{theorem}
